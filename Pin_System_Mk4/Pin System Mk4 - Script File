@@ -1,4 +1,4 @@
-//## 
+//## I used only 1 section of inputting digit instead of 4-12 as before, shortened the flickering leds part by using modulo function
 
 // Marker for when all the inputs are off
 if( [I0000] == 0 && [I0001] == 0 && [I0002] == 0 && [I0003] == 0 && [I0004] == 0 && [I0005] == 0 && [I0006] == 0 && [I0007] == 0 && [I0010] == 0 && [I0012] == 0 ) { SET([M0100]); }
