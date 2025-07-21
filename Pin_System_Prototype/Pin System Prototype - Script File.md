@@ -1,10 +1,10 @@
-## Overview
-  This is an early PIN system version that handles digit-by-digit input, 
-  storing and checking four digits using markers.
-  It separates modes for accessing, setting and setting requirement.
-  with basic error handling and output signals for correct or wrong input. 
-  The logic is repetitive but lays foundation for next versions
-## Script
+//## Overview
+//  This is an early PIN system version that handles digit-by-digit input, 
+//  storing and checking four digits using markers.
+//  It separates modes for accessing, setting and setting requirement.
+//  with basic error handling and output signals for correct or wrong input. 
+//  The logic is repetitive but lays foundation for next versions
+//## Script
 
 // Requirement
 
