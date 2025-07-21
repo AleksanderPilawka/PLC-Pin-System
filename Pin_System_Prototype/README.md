@@ -8,9 +8,9 @@ This was the first attempt at building a 4-digit PIN code system in WindLDR usin
 
 ## Features Attempted
 - 4-digit PIN input system
-- Modes: PIN Setting / Requirement / Accessing
+- Modes: PIN Setting / Set Requirement / Accessing
 - Step-by-step logic using markers
-- Visual outputs triggered by timers
+- Visual outputs triggered by steps
 
 ## Key Learnings
 - Redundant logic (each mode handled separately)
