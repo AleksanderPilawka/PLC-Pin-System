@@ -1,0 +1,108 @@
+==============================
+PROJECT: PIN Code System
+VERSION: Mk5
+AUTHOR: Aleksander Pilawka
+PLATFORM: WindLDR (Ladder)
+DATE: 20.07.2025
+==============================
+
+DESCRIPTION:
+-------------
+This is a 4-digit PIN code verification system built in WindLDR Ladder format.
+It simulates a secure access system with input validation, state memory, and error handling.
+
+FEATURES:
+---------
+- 4-digit PIN entry (one digit at a time)
+- Visual feedback (LEDs/Outputs toggle after full PIN)
+- PIN comparison using data registers
+- Three states: Setting mode, Access mode, and Requirement mode
+- Input debouncing and digit validation
+- 30 second penalty after 3 incorrect tries
+- Marker and Data Register optimization for memory
+
+HOW TO USE:
+-----------
+- 4-digit PIN entry with visual feedback
+- Three main modes:
+   • Setting Mode (initial state)
+   • Accessing Mode (after PIN set)
+   • Requirement Mode (PIN change authentication)
+- 3 wrong attempts trigger 30-second lockout
+- Manual PIN reset: press Enter + Clear simultaneously
+- Input clear button at any stage
+- Flickering LEDs as feedback on successful or incorrect PIN entry
+
+MODE FLOW:
+----------
+1. First Startup → Enters Setting Mode:
+   - User inputs new 4-digit PIN
+   - Press "Enter" to confirm
+
+2. Accessing Mode:
+   - User inputs 4-digit PIN to unlock
+   - Green lamp flickers if correct
+   - Red if incorrect
+   - 3 wrong attempts = 30s lockout (M17 Active)
+
+3. Change PIN Flow:
+   - Press Enter + Clear simultaneously
+   - Program enters Requirement Mode
+   - Input previous PIN to verify identity
+   - If correct: returns to Setting Mode
+
+BUTTONS:
+--------
+- Digit Inputs: I0-I7,I10,I12 - Digits 0-9
+- Enter: I13
+- Clear: I11
+- Mode Reset (Enter + Clear): triggers Requirement Mode
+
+OUTPUTS:
+--------
+- Green Lamp: Q1 (Access granted flicker)
+- Red Lamp: Q0 (Error)
+
+MEMORY USAGE:
+-------------
+- Markers:
+   • M14-M16 - Mode Markers
+   • M17 - 30 Second Penalty Active
+   • M100 - All Inputs Off Flag
+   • M101 - Triggers Green LED flickering when access granted
+   • M102 - Triggers Red LED flickering when access denied
+   • M103 - An output from 4 comparators saying if the input pin is correct or not
+   • M104 - temp marker, will get rid of it in next version
+
+- Data Registers:
+   • D0 - Active Step
+   • D1 - Data Register that helps setting temporary pin
+   • D2 - Incorrect Attempts Counter
+   • D10-D13 - Temp Data Registers, used for comparison
+   • D100-D103 - The Actual Pin Registers
+
+- Timers:
+   • T0-T2 - Responsible for Flickering Green Led
+   • T3-T5 - Responsible for Flickering Red Led
+   • T7 - Penalty Timer, 30 seconds
+
+NOTES:
+------
+- All logic has been manually tested and debugged.
+- Logic structure is ready for future porting to other platforms.
+- Fixed issues in version Mk5:
+   - Cleaned unused markers
+   
+HOW TO RUN:
+-----------
+1. Load the `.pjw` file in WindLDR
+2. Use the simulator or hardware inputs mentioned earlier
+3. Follow on-screen LED/Output feedback
+4. In ProjectWindow/CustomMonitors there is a Monitor ready where you can look at active markers and currect data stored in Data Registers
+
+FILE CONTENTS:
+--------------
+- Mk5_Info.txt .......... [This file]
+- README.md ............. [GitHub summary]
+- Mk5_Ladder.pjw ........ [WindLDR Ladder file]
+- Mk5_ScreenShot1-4 ..... [4 screenshots of program]
