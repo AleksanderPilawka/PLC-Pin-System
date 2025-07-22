@@ -2,7 +2,7 @@
 5th Version of the Pin System, now written in WindLDR Ladder Logic
 
 ## Status
-  - Fully Functional
+  - Fully Functional, works the same as Mk4, but the size is halved.
     
 ## Features
   - 4-digit PIN input system
